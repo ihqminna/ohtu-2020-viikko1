@@ -13,16 +13,60 @@ import static org.junit.Assert.*;
 public class VarastoTest {
 
     Varasto varasto;
+    Varasto varasto2;
     double vertailuTarkkuus = 0.0001;
 
     @Before
     public void setUp() {
         varasto = new Varasto(10);
+        varasto2 = new Varasto(10, 2);
+    }
+    
+    @Test
+    public void uusiTayttoYli() {
+        varasto2 = new Varasto(2, 10);
+        assertEquals(2, varasto2.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void tayttoYli(){
+        varasto.lisaaVarastoon(20);
+        assertEquals(10, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void varastoEiTyhja(){
+        assertEquals(2, varasto2.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void tyhjaVarasto(){
+        varasto = new Varasto(-1.1);
+        varasto2 = new Varasto(-1.1, -1.1);
+        assertEquals(0, varasto.getTilavuus(), vertailuTarkkuus);
+        assertEquals(0, varasto2.getTilavuus(), vertailuTarkkuus);        
     }
 
     @Test
     public void konstruktoriLuoTyhjanVaraston() {
         assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void negTaytto(){
+        varasto.lisaaVarastoon(-1.1);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void negOtto(){
+        varasto.otaVarastosta(-1.1);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void liianSuuriOtto(){
+        assertEquals(2, varasto2.otaVarastosta(10), vertailuTarkkuus);
     }
 
     @Test
@@ -63,6 +107,11 @@ public class VarastoTest {
 
         // varastossa pitäisi olla tilaa 10 - 8 + 2 eli 4
         assertEquals(4, varasto.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void toStringTest(){
+        assertEquals("saldo = 2.0, vielä tilaa 8.0", varasto2.toString());
     }
 
 }
