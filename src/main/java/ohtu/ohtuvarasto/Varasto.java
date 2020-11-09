@@ -61,7 +61,7 @@ public class Varasto {
         }
     }
 
-    public double otaVarastosta(double maara) {
+    public double otaVarastostaRiko(double maara) {
         if (maara < 0) // virhetilanteessa voidaan tehdä 
         {
             return 0.0;   // tällainen pikapoistuminenkin!
