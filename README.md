@@ -1,4 +1,4 @@
 # ohtu-2020-viikko1
 
 ![GitHub Actions](https://github.com/mluukkai/ohtu-viikko1-s2020/workflows/Java%20CI%20with%20Gradle/badge.svg)
-![codecov](https://codecov.io/gh/ihqminna/ohtu-2020-viikko1/branch/main/graph/badge.svg?token=T54TL85WN6)](https://codecov.io/gh/ihqminna/ohtu-2020-viikko1)
+![codecov](https://codecov.io/gh/ihqminna/ohtu-2020-viikko1/branch/main/graph/badge.svg?token=T54TL85WN6)
